@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvq4bfy7ojph"]
+
+[ext_resource type="Script" path="res://scenes/CharacterBody2D.gd" id="1_34vfc"]
+[ext_resource type="Texture2D" uid="uid://bbh73j16ky7f5" path="res://textures/Shadow.png" id="2_8oaso"]
+[ext_resource type="PackedScene" uid="uid://b2gtiu1i0xs3e" path="res://User Interface/hud.tscn" id="3_7bfno"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fguv5"]
+
+[node name="Character" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_34vfc")
+air_amount = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fguv5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_8oaso")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("3_7bfno")]

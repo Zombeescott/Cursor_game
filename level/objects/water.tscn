@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5wx4w81xyp37"]
+
+[ext_resource type="Script" path="res://level/objects/Water.gd" id="1_ribv0"]
+
+[node name="Water" type="Area2D"]
+script = ExtResource("1_ribv0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 574.0
+offset_bottom = 312.0
+color = Color(0.285484, 0.574113, 0.780298, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

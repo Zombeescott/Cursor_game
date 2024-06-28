@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfon1e3dc6gg3"]
+
+[ext_resource type="PackedScene" uid="uid://c5wx4w81xyp37" path="res://level/objects/water.tscn" id="1_5lvd8"]
+[ext_resource type="PackedScene" uid="uid://bvq4bfy7ojph" path="res://scenes/character.tscn" id="2_yncbl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smuap"]
+size = Vector2(574, 311)
+
+[node name="Test Level" type="Node2D"]
+
+[node name="Water" parent="." instance=ExtResource("1_5lvd8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+position = Vector2(287, 155.5)
+shape = SubResource("RectangleShape2D_smuap")
+
+[node name="Character" parent="." instance=ExtResource("2_yncbl")]
+position = Vector2(304, 156)

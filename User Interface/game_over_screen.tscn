@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxelv1umpojyb"]
+
+[ext_resource type="Script" path="res://User Interface/Game Over Screen.gd" id="1_iy6mw"]
+
+[node name="Game Over Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iy6mw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0, 0.34902, 0.133333, 0.619608)
+
+[node name="Game Over" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -54.0
+offset_right = 207.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 76
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/Game Over"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 57.5
+offset_right = 175.0
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Try Again" type="Button" parent="CanvasLayer/ColorRect/Game Over/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Try Again"
+
+[node name="Exit Game" type="Button" parent="CanvasLayer/ColorRect/Game Over/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit Game"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Game Over/HBoxContainer/Try Again" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Game Over/HBoxContainer/Exit Game" to="." method="_on_exit_game_pressed"]
