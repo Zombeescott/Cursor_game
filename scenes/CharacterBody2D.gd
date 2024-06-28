@@ -8,7 +8,8 @@ const SPEED = 300.0
 
 var air_left : int = 100
 var air_rate : float = 1
-var safe : bool = true
+# total bodies of water currently inside
+var waters_entered : int = 0
 
 
 func _ready() -> void:
@@ -25,10 +26,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if safe and air_amount != air_left:
+	if waters_entered > 0 and air_amount != air_left:
 		air_left = air_amount
 		hud.update_air(air_left)
-	elif !safe and air_left != 0:
+	elif waters_entered == 0 and air_left != 0:
 		air_left -= delta * air_rate
 		hud.update_air(air_left)
 	
@@ -37,4 +38,8 @@ func _physics_process(delta: float) -> void:
 
 
 func update_status(safe : bool) -> void:
-	self.safe = safe
+	if safe:
+		waters_entered += 1
+	elif waters_entered > 0: 
+		waters_entered -= 1
+	print(waters_entered)

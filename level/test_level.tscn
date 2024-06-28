@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfon1e3dc6gg3"]
+[gd_scene load_steps=7 format=3 uid="uid://bfon1e3dc6gg3"]
 
 [ext_resource type="PackedScene" uid="uid://c5wx4w81xyp37" path="res://level/objects/water.tscn" id="1_5lvd8"]
+[ext_resource type="Texture2D" uid="uid://cdo678illaol5" path="res://level/box.png" id="2_laijv"]
 [ext_resource type="PackedScene" uid="uid://bvq4bfy7ojph" path="res://scenes/character.tscn" id="2_yncbl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smuap"]
 size = Vector2(574, 311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcwac"]
+size = Vector2(25, 482)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ron13"]
+size = Vector2(23, 357)
 
 [node name="Test Level" type="Node2D"]
 
@@ -14,5 +21,63 @@ size = Vector2(574, 311)
 position = Vector2(287, 155.5)
 shape = SubResource("RectangleShape2D_smuap")
 
+[node name="ColorRect" type="ColorRect" parent="Water/CollisionShape2D"]
+offset_left = -286.0
+offset_top = -152.5
+offset_right = 288.0
+offset_bottom = 159.5
+color = Color(0.285484, 0.574113, 0.780298, 1)
+
+[node name="Box" type="RigidBody2D" parent="."]
+position = Vector2(-933, 94)
+
+[node name="Water" parent="Box" instance=ExtResource("1_5lvd8")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Box/Water"]
+polygon = PackedVector2Array(-2, -23, 167, -23, 167, 76, 334, 76, 335, 483, 2, 483)
+
+[node name="ColorRect" type="ColorRect" parent="Box/Water"]
+offset_left = 169.0
+offset_top = -22.0
+offset_right = 676.0
+offset_bottom = 150.0
+rotation = 1.56617
+color = Color(0.285484, 0.574113, 0.780298, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Box/Water"]
+offset_left = 337.0
+offset_top = 77.0
+offset_right = 745.0
+offset_bottom = 416.0
+rotation = 1.56617
+color = Color(0.285484, 0.574113, 0.780298, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+position = Vector2(165, 202)
+scale = Vector2(5.61221, 6.70327)
+texture = ExtResource("2_laijv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(2.5, 231)
+shape = SubResource("RectangleShape2D_mcwac")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
+position = Vector2(332, 231)
+shape = SubResource("RectangleShape2D_mcwac")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Box"]
+position = Vector2(167.5, 483.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ron13")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Box"]
+position = Vector2(168, -22)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ron13")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Box"]
+position = Vector2(168, 168)
+shape = SubResource("RectangleShape2D_ron13")
+
 [node name="Character" parent="." instance=ExtResource("2_yncbl")]
-position = Vector2(304, 156)
+position = Vector2(-841, 174)
